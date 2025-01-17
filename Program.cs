@@ -1,4 +1,9 @@
-﻿using YoutubeExplode;
+﻿using AngleSharp;
+using System;
+using System.Globalization;
+using System.IO;
+using YoutubeExplode;
+using YoutubeExplode.Videos;
 using YoutubeExplode.Videos.Streams;
 
 namespace Praktika_18_4_1
@@ -13,6 +18,7 @@ namespace Praktika_18_4_1
 
             //Использование предыдущей версии библиотеки для обхождение региональных ограничений
             var youtube = new YoutubeClient();
+            
 
             //Получение названия и описания
             Description description = new (youtube,urlvideo);
@@ -25,6 +31,9 @@ namespace Praktika_18_4_1
             //Скачивание видео
             DownloadVideo download = new(youtube,urlvideo,FullPath);
             await download.Done();
+
+            //Не получилось проверить скачивание видео, откат на предыдущую версию не помог
+            //Использование другой библиотеки VideoLibrary так же не помогло
 
         }
     }
